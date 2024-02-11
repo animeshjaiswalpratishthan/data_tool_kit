@@ -1,0 +1,23 @@
+CREATE TABLE metastore.data_node_definition (
+    serial_number serial primary key,
+	source_name text,
+	source_category text,
+	connection_type text,
+	table_alias text,
+	source_type text,
+	path text,
+	project varchar,
+	additional_details text,
+    FOREIGN KEY (project) REFERENCES project(project_name)
+);
+
+
+
+CREATE TABLE public.project
+(
+    project_description varchar,
+    project_name varchar,
+    project_id int serial,
+    CONSTRAINT project_pkey PRIMARY KEY (project_id),
+    CONSTRAINT ck_project_name UNIQUE (project_name)
+);
